@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include <iostream>
 #include "Kolekcja_stringow.h"
+#include "string.h"
+
 using namespace std;
 
 // kolekcja_stringow.h
@@ -8,16 +10,17 @@ using namespace std;
 // kolekcja_stringow.cpp
 kolekcja_stringow::kolekcja_stringow(int n)
 {
-	values = new char*[n];
+	values = new char*[n]();
 	size = n;
 }
 
 kolekcja_stringow::kolekcja_stringow(const kolekcja_stringow& src)
 {
-	values = new char*[src.size];
+	values = new char*[src.size]();
 	size = src.size;
 	for (int i = 0; i < src.size; i++)
 	{
+		values[i] = new char[strlen(src.values[i])]();
 		strcpy(values[i], src.values[i]);
 	}
 }
@@ -38,9 +41,10 @@ kolekcja_stringow& kolekcja_stringow::operator=(const kolekcja_stringow& rhs)
 {
 	delete[] values;
 	size = rhs.size;
-	values = new char*[rhs.size];
+	values = new char*[rhs.size]();
 	for (int i = 0; i < rhs.size; i++)
 	{
+		values[i] = new char[strlen(rhs.values[i])]();
 		strcpy(values[i], rhs.values[i]);
 	}
 

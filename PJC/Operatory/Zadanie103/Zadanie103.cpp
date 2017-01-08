@@ -13,10 +13,11 @@ int main()
 	ks(1, "bbbb");
 	ks(2, "cccc");
 
-	kolekcja_stringow ks2 = kolekcja_stringow(5);
-	ks2 = ks;
+	kolekcja_stringow ks2 = ks;
+	kolekcja_stringow ks3 = kolekcja_stringow(5);
+	ks3 = ks2;
 
-	cout << ks2 << endl;
+	cout << ks3 << endl;
 
     return 0;
 }
